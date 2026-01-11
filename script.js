@@ -1,22 +1,37 @@
-function addRequest() {
-  const bloodGroup = document.getElementById("bloodGroup").value;
-  const contact = document.getElementById("contact").value;
-  const requestList = document.getElementById("requestList");
+const form = document.getElementById("donationForm");
+const tableBody = document.querySelector("#requestTable tbody");
 
-  if (bloodGroup === "" || contact === "") {
-    alert("Please fill all details");
-    return;
-  }
+form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-  const card = document.createElement("div");
-  card.className = "request-card";
-  card.innerHTML = `
-    <strong>Blood Group:</strong> ${bloodGroup} <br>
-    <strong>Contact:</strong> ${contact}
-  `;
+    const name = document.getElementById("name").value.trim();
+    const blood = document.getElementById("blood").value;
+    const city = document.getElementById("city").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
-  requestList.appendChild(card);
+    // Simple validation
+    if(!name || !blood || !city || !phone){
+        alert("Please fill all fields!");
+        return;
+    }
 
-  document.getElementById("bloodGroup").value = "";
-  document.getElementById("contact").value = "";
-}
+    if(!/^\d{10}$/.test(phone)){
+        alert("Enter valid 10-digit phone number");
+        return;
+    }
+
+    // Create new table row
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${blood}</td>
+        <td>${city}</td>
+        <td>${phone}</td>
+    `;
+
+    tableBody.appendChild(row);
+
+    // Reset form
+    form.reset();
+});
