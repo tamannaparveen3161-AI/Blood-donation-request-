@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Donation Request</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>🩸 Blood Donation Request</h1>
+    <p class="subtitle">
+      A small step to save a life
+    </p>
+
+    <div class="form-box">
+      <label>Blood Group</label>
+      <select id="bloodGroup">
+        <option value="">Select</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>O+</option>
+        <option>O-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+      </select>
+
+      <label>Contact Number</label>
+      <input type="text" id="contact" placeholder="Enter contact number">
+
+      <button onclick="addRequest()">Submit Request</button>
+    </div>
+
+    <h2>Active Blood Requests</h2>
+    <div id="requestList" class="list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
